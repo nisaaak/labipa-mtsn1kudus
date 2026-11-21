@@ -23,7 +23,14 @@ const DokumentasiPage = () => {
     }, [])
 
     if (loading) {
-        return <p className="pt-20 pb-7">Memuat data ....</p>
+        return (
+            <div class="flex items-center min-h-screen justify-center space-x-2 pt-20">
+                <div
+                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-stone-500 border-t-transparent"
+                ></div>
+                <p class="text-stone-600 dark:text-stone-300">Loading...</p>
+            </div>
+        )
     }
 
     if (error) {
@@ -31,7 +38,7 @@ const DokumentasiPage = () => {
     }
 
     return (
-        <div className={`${theme} bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-10 sm:px-20 flex flex-col gap-4 py-18`}>
+        <div className={`${theme} bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
             <div className="">
                 <span className="font-bold text-4xl">Dokumentasi Praktikum</span>
                 <br />

@@ -22,7 +22,14 @@ const SopPage = () => {
     }, [])
 
     if (loading) {
-        return <p className="pt-20 pb-7">Memuat data ....</p>
+        return (
+            <div class="flex items-center min-h-screen justify-center space-x-2 pt-20">
+                <div
+                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-stone-500 border-t-transparent"
+                ></div>
+                <p class="text-stone-600 dark:text-stone-300">Loading...</p>
+            </div>
+        )
     }
 
     if (error) {
@@ -30,7 +37,7 @@ const SopPage = () => {
     }
 
     return (
-        <div className={`bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-10 sm:px-20 flex flex-col gap-4 py-18`}>
+        <div className={`bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
             <div className="">
                 <span className="font-bold text-4xl">SOP</span>
                 <br />
@@ -43,7 +50,7 @@ const SopPage = () => {
                     <div className="flex flex-col bg-stone-100 dark:bg-stone-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-stone-300 dark:border-stone-500">
                         <div className="flex items-center">
                             <Astroid size={20} className="text-amber-500" />
-                            <span className="text-xl font-semibold">SOP Penggunaan Laboratorium IPA</span>
+                            <span className="text-sm sm:text-xl font-semibold">SOP Penggunaan Laboratorium IPA</span>
                         </div>
                         <iframe
                             src={data[0].link}
@@ -60,7 +67,7 @@ const SopPage = () => {
                     <div className="flex flex-col bg-stone-100 dark:bg-stone-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-stone-300 dark:border-stone-500">
                         <div className="flex items-center">
                             <Astroid size={20} className="text-amber-500" />
-                            <span className="text-xl font-semibold">SOP Pelaksanaan Praktikum/Kegiatan di Laboratorium IPA</span>
+                            <span className="text-sm sm:text-xl font-semibold">SOP Pelaksanaan Praktikum/Kegiatan di Laboratorium IPA</span>
                         </div>
                         <iframe
                             src={data[1].link}

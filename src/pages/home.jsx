@@ -33,7 +33,7 @@ const HomePage = () => {
 
     const [filter, setFilter] = useState('');
     const [search, setSearch] = useState("");
-    const [layout, setLayout] = useState('list')
+    const [layout, setLayout] = useState('List')
 
     useEffect(() => {
         const fetchData = async () => {
@@ -104,22 +104,15 @@ const HomePage = () => {
         return difilter
     }, [dataInven, filter, search]);
 
-    // useEffect(() => {
-    //     async function LoadData() {
-    //         try {
-    //             const result = await getSheetData('Home')
-    //             setData(result)
-    //         } catch (err) {
-    //             setError(err.message)
-    //         } finally {
-    //             setLoading(false)
-    //         }
-    //     }
-    //     LoadData()
-    // }, [])
-
     if (loading) {
-        return <p className="pt-20 pb-7">Memuat data ....</p>
+        return (
+            <div class="flex items-center min-h-screen justify-center space-x-2 pt-20">
+                <div
+                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-stone-500 border-t-transparent"
+                ></div>
+                <p class="text-stone-600 dark:text-stone-300">Loading...</p>
+            </div>
+        )
     }
 
     if (error) {
@@ -127,20 +120,20 @@ const HomePage = () => {
     }
 
     return (
-        <div className={`bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-10 sm:px-20 flex flex-col gap-4 py-18`}>
+        <div className={`bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
             {/* section */}
             <div className="flex gap-7">
                 <div className="w-auto h-auto">
-                    <img src={logoImg} className="base" width="100" height="auto" alt="" />
+                    <img src={logoImg} className="w-40 h-auto" alt="" />
                 </div>
                 <div className="flex flex-col">
-                    <span className="font-bold text-3xl text-stone-700 dark:text-stone-50">
+                    <span className="font-bold text-2xl sm:text-3xl text-stone-700 dark:text-stone-50">
                         Laboratorium IPA
                     </span>
-                    <span className="font-bold text-3xl text-stone-700 dark:text-stone-50">
+                    <span className="font-bold text-2xl sm:text-3xl text-stone-700 dark:text-stone-50">
                         MTsN 1 Kudus
                     </span>
-                    <span className="border-t-stone-500 dark:border-t-stone-300 border-t-2 mt-4 text-stone-500 dark:text-stone-300">
+                    <span className="text-xs sm:text-sm border-t-stone-500 dark:border-t-stone-300 border-t-2 mt-4 text-stone-500 dark:text-stone-300">
                         Sistem informasi dan manajemen Laboratorium IPA MTsN 1 Kudus
                     </span>
                 </div>
@@ -164,8 +157,8 @@ const HomePage = () => {
                                 <Search size={20} className="text-stone-500 dark:text-stone-100" />
                             </button>
                         </div>
-                        <div className="flex flex-col sm:flex-row justify-between gap-2 my-2">
-                            <div className="flex gap-2">
+                        <div className="flex justify-between gap-2 mt-2">
+                            <div className="flex gap-1">
                                 <button
                                     onClick={() => { setFilter(filter !== 'Fisika' ? 'Fisika' : '') }}
                                     className={`${filter === "Fisika"
@@ -189,7 +182,7 @@ const HomePage = () => {
                                             : isDark
                                                 ? "border-stone-400"
                                                 : "border-stone-400"}
-                                       border px-2 py-1 rounded-tr-2xl text-sm cursor-pointer`}>
+                                       border px-2 py-1 rounded-tr-2xl text-xs cursor-pointer`}>
                                     Fisika
                                 </button>
                                 <button
@@ -215,7 +208,7 @@ const HomePage = () => {
                                             : isDark
                                                 ? "border-stone-400"
                                                 : "border-stone-400"}
-                                       border px-2 py-1 rounded-tr-2xl text-sm cursor-pointer`}>
+                                       border px-2 py-1 rounded-tr-2xl text-xs cursor-pointer`}>
                                     Kimia
                                 </button>
                                 <button
@@ -241,7 +234,7 @@ const HomePage = () => {
                                             : isDark
                                                 ? "border-stone-400"
                                                 : "border-stone-400"}
-                                       border px-2 py-1 rounded-tr-2xl text-sm cursor-pointer`}>
+                                       border px-2 py-1 rounded-tr-2xl text-xs cursor-pointer`}>
                                     Biologi
                                 </button>
                                 <button
@@ -267,7 +260,7 @@ const HomePage = () => {
                                             : isDark
                                                 ? "border-stone-400"
                                                 : "border-stone-400"}
-                                       border px-2 py-1 rounded-tr-2xl text-sm cursor-pointer`}>
+                                       border px-2 py-1 rounded-tr-2xl text-xs cursor-pointer`}>
                                     Bahan
                                 </button>
                                 <button
@@ -293,35 +286,49 @@ const HomePage = () => {
                                             : isDark
                                                 ? "border-stone-400"
                                                 : "border-stone-400"}
-                                       border px-2 py-1 rounded-tr-2xl text-sm cursor-pointer`}>
+                                       border px-2 py-1 rounded-tr-2xl text-xs cursor-pointer`}>
                                     Perabot
                                 </button>
                             </div>
-                            <div className="flex items-center">
-                                <button onClick={() => { setLayout('list') }} className={`px-2 py-1 border border-stone-500 rounded-l-xl ${layout == 'list' ? 'bg-stone-300' : 'bg-white'}`}>
+                            <div className="hidden sm:flex items-center">
+                                <button onClick={() => { setLayout('List') }} className={`px-2 py-1 border border-stone-500 rounded-l-xl ${layout == 'List' ? 'bg-stone-300' : 'bg-white'}`}>
                                     <List size={15} className="text-stone-500" />
                                 </button>
-                                <button onClick={() => { setLayout('grid') }} className={`px-2 border py-1 border-stone-500 rounded-r-xl ${layout == 'grid' ? 'bg-stone-300' : 'bg-white'}`}>
+                                <button onClick={() => { setLayout('Grid') }} className={`px-2 border py-1 border-stone-500 rounded-r-xl ${layout == 'Grid' ? 'bg-stone-300' : 'bg-white'}`}>
                                     <LayoutGrid size={15} className="text-stone-500" />
                                 </button>
                             </div>
                         </div>
                     </div>
+                    <div className="flex sm:hidden justify-between">
+                        <div className="text-sm">
+                            Tampilan
+                        </div>
+                        <div className="flex items-center">
+                            <button onClick={() => { setLayout('List') }} className={`px-2 py-1 border border-stone-500 rounded-l-xl ${layout == 'List' ? 'bg-stone-300' : 'bg-white'}`}>
+                                <List size={15} className="text-stone-500" />
+                            </button>
+                            <button onClick={() => { setLayout('Grid') }} className={`px-2 border py-1 border-stone-500 rounded-r-xl ${layout == 'Grid' ? 'bg-stone-300' : 'bg-white'}`}>
+                                <LayoutGrid size={15} className="text-stone-500" />
+                            </button>
+                        </div>
+                    </div>
+
                     {/* <div>{JSON.stringify(dataKalender)}</div> */}
-                    {layout === 'list' ? (
+                    {layout === 'List' ? (
                         <div className="max-h-[500px] overflow-auto rounded-lg border border-stone-400 mb-5">
                             <table className="w-full min-w-[1100px] table-fixed border-collapse text-sm">
                                 <thead className="sticky top-0 z-10 bg-stone-600 dark:bg-stone-100 text-amber-300 dark:text-stone-700">
                                     <tr>
-                                        <th className="w-64 p-2 text-center">Nama</th>
-                                        <th className="w-64 p-2 text-center">Kategori</th>
-                                        <th className="w-64 p-2 text-center">Kode</th>
-                                        <th className="w-64 p-2 text-center">Lokasi</th>
-                                        <th className="w-64 p-2 text-center">Jumlah</th>
-                                        <th className="w-64 p-2 text-center">Baik</th>
-                                        <th className="w-64 p-2 text-center">Rusak ringan</th>
-                                        <th className="w-64 p-2 text-center">Rusak berat</th>
-                                        <th className="w-64 p-2 text-center">Keterangan</th>
+                                        <th className="w-50 px-2 py-1 text-center">Nama</th>
+                                        <th className="w-30 px-2 py-1 text-center">Kategori</th>
+                                        <th className="w-30 px-2 py-1 text-center">Kode</th>
+                                        <th className="w-30 px-2 py-1 text-center">Lokasi</th>
+                                        <th className="w-15 px-2 py-1 text-center">Jumlah</th>
+                                        <th className="w-15 px-2 py-1 text-center">Baik</th>
+                                        <th className="w-15 px-2 py-1 text-center">Rusak ringan</th>
+                                        <th className="w-15 px-2 py-1 text-center">Rusak berat</th>
+                                        <th className="w-50 px-2 py-1 text-center">Keterangan</th>
                                     </tr>
                                 </thead>
 
@@ -368,7 +375,7 @@ const HomePage = () => {
                                             <td className="px-3 py-3 text-center">
                                                 {item.rusak_berat}
                                             </td>
-                                            <td className="break-words px-3 py-3">
+                                            <td className="break-words px-3 py-3 text-center">
                                                 {item.keterangan || "-"}
                                             </td>
                                         </tr>
@@ -418,8 +425,8 @@ const HomePage = () => {
                         <span className="text-xl font-semibold">LKPD</span>
                     </div>
                     <div className="grid grid-cols sm:grid-cols-4 gap-5 max-h-[500px] overflow-auto">
-                        {dataLKPD.map(item => (
-                            <a href={item.link} className="flex rounded-md bg-white dark:bg-zinc-800 hover:bg-amber-50 dark:hover:bg-stone-500 p-1 gap-2 shadow-md items-center">
+                        {dataLKPD.map((item, i) => (
+                            <a key={i} href={item.link} className="flex rounded-md bg-white dark:bg-zinc-800 hover:bg-amber-50 dark:hover:bg-stone-500 p-1 gap-2 shadow-md items-center">
                                 <img
                                     src={item.image}
                                     className="w-20 h-full rounded-t-md"
@@ -475,8 +482,8 @@ const HomePage = () => {
                         <span className="text-xl font-semibold">Lab Virtual</span>
                     </div>
                     <div className="grid grid-cols sm:grid-cols-4 gap-5 max-h-[500px] overflow-auto">
-                        {dataLabV.map(item => (
-                            <a href={item.link} className="flex rounded-md bg-white dark:bg-zinc-800 hover:bg-amber-50 dark:hover:bg-stone-500 p-1 gap-2 shadow-md items-center">
+                        {dataLabV.map((item, i) => (
+                            <a key={i} href={item.link} className="flex rounded-md bg-white dark:bg-zinc-800 hover:bg-amber-50 dark:hover:bg-stone-500 p-1 gap-2 shadow-md items-center">
                                 <img
                                     src={item.image}
                                     className="w-20 h-full rounded-t-md mask-radial-[100%_100%] mask-radial-from-75% mask-radial-at-left"
@@ -484,9 +491,9 @@ const HomePage = () => {
                                 <div className="flex flex-col">
                                     <span className="mb-2 text-md text-stone-500 dark:text-stone-200">{item.nama}</span>
                                     <div className="flex gap-1">
-                                        {item.bidang.split(',').map(i => (
-                                            <div className={`rounded p-1 font-semibold text-xs text-white ${i == 'Biologi' ? 'bg-emerald-400' : i == 'Kimia' ? 'bg-amber-400' : 'bg-blue-400'}`}>
-                                                {i}
+                                        {item.bidang.split(',').map((it, i) => (
+                                            <div key={i} className={`rounded p-1 font-semibold text-xs text-white ${it == 'Biologi' ? 'bg-emerald-400' : it == 'Kimia' ? 'bg-amber-400' : 'bg-blue-400'}`}>
+                                                {it}
                                             </div>
                                         ))}
                                     </div>
@@ -504,38 +511,47 @@ const HomePage = () => {
                         <Astroid size={20} className="text-amber-500" />
                         <span className="text-xl font-semibold">Jadwal Penggunaan Lab IPA</span>
                     </div>
-                    <FullCalendar
-                        plugins={[dayGridPlugin, themePlugin]}
-                        initialView="dayGridMonth"
-                        colorScheme={isDark ? 'dark' : 'light'}
-                        events={dataKalender}
-                        //     [
-                        //     {
-                        //         title: "Uji asam basa", date: "2026-11-17", extendedProps: {
-                        //             jam: "4-5",
-                        //             kelas: "8F",
-                        //             guru: "SW"
-                        //         }
-                        //     },
-                        // ]
-                        eventContent={(eventInfo) => {
-                            const { kelas, guru, jam } = eventInfo.event.extendedProps;
+                    <div className="max-h-[900px] overflow-auto">
+                        <div className="w-full min-w-[700px]">
+                            <FullCalendar
+                                plugins={[dayGridPlugin, themePlugin]}
+                                initialView="dayGridMonth"
+                                headerToolbar={{
+                                    left: 'prev,next',
+                                    center: 'title',
+                                    right: 'dayGridWeek,dayGridDay' // user can switch between the two
+                                }}
+                                colorScheme={isDark ? 'dark' : 'light'}
+                                events={dataKalender}
+                                //     [
+                                //     {
+                                //         title: "Uji asam basa", date: "2026-11-17", extendedProps: {
+                                //             jam: "4-5",
+                                //             kelas: "8F",
+                                //             guru: "SW"
+                                //         }
+                                //     },
+                                // ]
+                                eventContent={(eventInfo) => {
+                                    const { kelas, guru, jam } = eventInfo.event.extendedProps;
 
-                            return (
-                                <div className="p-1 whitespace-normal text-xs leading-relaxed">
-                                    <p className="font-semibold">
-                                        {eventInfo.event.title}
-                                    </p>
-                                    <p>
-                                        Jam: {jam} ({kelas})
-                                    </p>
-                                    <p>
-                                        Guru: {guru}
-                                    </p>
-                                </div>
-                            );
-                        }}
-                    />
+                                    return (
+                                        <div className="p-1 whitespace-normal text-xs leading-relaxed">
+                                            <p className="font-semibold">
+                                                {eventInfo.event.title}
+                                            </p>
+                                            <p>
+                                                Jam: {jam} ({kelas})
+                                            </p>
+                                            <p>
+                                                Guru: {guru}
+                                            </p>
+                                        </div>
+                                    );
+                                }}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
 

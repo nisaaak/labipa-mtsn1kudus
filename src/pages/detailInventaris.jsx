@@ -26,7 +26,14 @@ const DetailInventarisPage = () => {
     }, [])
 
     if (loading) {
-        return <p className="pt-20 pb-7">Memuat data ....</p>
+        return (
+            <div class="flex items-center min-h-screen justify-center space-x-2 pt-20">
+                <div
+                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-stone-500 border-t-transparent"
+                ></div>
+                <p class="text-stone-600 dark:text-stone-300">Loading...</p>
+            </div>
+        )
     }
 
     if (error) {
@@ -34,7 +41,7 @@ const DetailInventarisPage = () => {
     }
 
     return (
-        <div className={`${theme}  bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-10 sm:px-20 flex flex-col gap-4 py-18`}>
+        <div className={`${theme}  bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
             <div className="">
                 <span className="font-bold text-4xl">Detail Inventaris</span>
             </div>
@@ -72,29 +79,29 @@ const DetailInventarisPage = () => {
                         </span>
                         <div className="flex gap-2">
                             <div className="flex flex-1 p-3 gap-2 flex-col bg-white dark:bg-stone-600 shadow-xl rounded-xs">
-                                <div className="text-stone-500 dark:text-stone-300">
+                                <div className="text-stone-500 dark:text-stone-300 text-sm sm:text-lg text-center flex-1">
                                     Lokasi Penyimpanan
                                 </div>
-                                <div className="flex text-xl font-semibold items-center">
+                                <div className="flex sm:text-xl font-semibold items-center justify-center flex-1">
                                     <MapPin size={15} className="" />
                                     {data[0].lokasi}
                                 </div>
                             </div>
                             <div className="flex flex-1 p-3 gap-2 flex-col bg-white dark:bg-stone-600 shadow-xl rounded-xs">
-                                <div className="text-stone-500 dark:text-stone-300">
+                                <div className="text-stone-500 dark:text-stone-300 text-sm sm:text-lg text-center flex-1">
                                     Jumlah Inventaris
                                 </div>
-                                <div className="font-semibold text-xl">
+                                <div className="font-semibold sm:text-xl flex-1 text-center">
                                     {data[0].jumlah}{' '}{data[0].satuan}
                                 </div>
                             </div>
                         </div>
                         <div className="flex flex-col bg-white dark:bg-stone-600 shadow-xl rounded-xs p-3 gap-2">
                             <div className="flex justify-between">
-                                <div className="text-stone-500 dark:text-stone-300">
+                                <div className="text-stone-500 dark:text-stone-300 text-sm sm:text-lg">
                                     Kondisi
                                 </div>
-                                <div className="bg-green-200 dark:bg-green-400 px-2 rounded-xl">
+                                <div className="bg-green-200 dark:bg-green-400 px-2 rounded-xl text-sm sm:text-lg">
                                     {data[0].baik / data[0].jumlah * 100}% baik
                                 </div>
                             </div>
@@ -106,15 +113,15 @@ const DetailInventarisPage = () => {
                             <div className="flex justify-between">
                                 <div className="flex items-center gap-1">
                                     <div className="bg-green-500 dark:bg-green-400 rounded-full w-2 h-2" />
-                                    <div className="text-green-500 dark:text-green-400">Baik: {data[0].baik}</div>
+                                    <div className="text-green-500 dark:text-green-400 text-xs sm:text-lg">Baik: {data[0].baik}</div>
                                 </div>
                                 <div className="flex items-center gap-1">
                                     <div className="bg-yellow-500 dark:bg-yellow-400 rounded-full w-2 h-2" />
-                                    <div className="text-yellow-500 dark:text-yellow-400">Rusak ringan: {data[0].rusak_ringan}</div>
+                                    <div className="text-yellow-500 dark:text-yellow-400 text-xs sm:text-lg">Rusak ringan: {data[0].rusak_ringan}</div>
                                 </div>
                                 <div className="flex items-center gap-1">
                                     <div className="bg-red-500 dark:bg-red-400 rounded-full w-2 h-2" />
-                                    <div className="text-red-500 dark:text-red-400">Rusak berat: {data[0].rusak_berat}</div>
+                                    <div className="text-red-500 dark:text-red-400 text-xs sm:text-lg">Rusak berat: {data[0].rusak_berat}</div>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +177,7 @@ const DetailInventarisPage = () => {
                                 <span className="text-xl font-semibold">Video Penggunaan</span>
                             </div>
                             <iframe
-                                className="w-sm sm:w-xl aspect-video"
+                                className="w-fit aspect-video"
                                 src={`https://www.youtube.com/embed/${data[0]?.video}`}
                                 title="YouTube video player"
                                 frameborder="0"
