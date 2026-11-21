@@ -6,10 +6,10 @@ const Navbar = () => {
     const { isDark, toggleTheme } = useTheme()
 
     return (
-        <nav className={`${isDark} z-50 w-full fixed bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-amber-50 px-4 border-b dark:border-stone-500 border-stone-300 `}>
+        <nav className={`${isDark} z-50 w-full fixed bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-amber-50 px-4 border-b dark:border-gray-500 border-gray-300 `}>
             <div className="flex items-center justify-between">
                 <Link to="/" className="flex gap-1 cursor-pointer p-2">
-                    <FlaskConical size={30} className={`${isDark ? 'text-amber-200' : 'text-amber-500'}`} />
+                    <FlaskConical size={30} className={`dark:text-amber-200 text-amber-500`} />
                     <span className="font-bold text-xl">
                         Lab IPA
                     </span>

@@ -26,9 +26,9 @@ const DokumentasiPage = () => {
         return (
             <div class="flex items-center min-h-screen justify-center space-x-2 pt-20">
                 <div
-                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-stone-500 border-t-transparent"
+                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-gray-500 border-t-transparent"
                 ></div>
-                <p class="text-stone-600 dark:text-stone-300">Loading...</p>
+                <p class="text-gray-600 dark:text-gray-300">Loading...</p>
             </div>
         )
     }
@@ -38,7 +38,7 @@ const DokumentasiPage = () => {
     }
 
     return (
-        <div className={`${theme} bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
+        <div className={`${theme} bg-white text-gray-800 dark:text-white dark:bg-gray-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
             <div className="">
                 <span className="font-bold text-4xl">Dokumentasi Praktikum</span>
                 <br />
@@ -46,14 +46,14 @@ const DokumentasiPage = () => {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {data.map((item, i) => (
-                    <div className="flex flex-col bg-stone-100 dark:bg-zinc-700 rounded-tr-xl shadow">
+                    <div className="flex flex-col bg-gray-100 dark:bg-zinc-700 rounded-tr-xl shadow">
                         <img
                             src={item.foto}
                             className="w-2xs h-full rounded-tr-xl"
                             alt="foto" />
                         <div className="p-1">
                             <div className="text-center">{item.kegiatan}</div>
-                            <div className="text-center text-xs text-stone-500 dark:text-stone-400">{item.tanggal}</div>
+                            <div className="text-center text-xs text-gray-500 dark:text-gray-400">{item.tanggal}</div>
                         </div>
                     </div>
                 ))}

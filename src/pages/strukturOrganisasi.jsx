@@ -25,9 +25,9 @@ const StrukturOrganisasiPage = () => {
         return (
             <div class="flex items-center min-h-screen justify-center space-x-2 pt-20">
                 <div
-                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-stone-500 border-t-transparent"
+                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-gray-500 border-t-transparent"
                 ></div>
-                <p class="text-stone-600 dark:text-stone-300">Loading...</p>
+                <p class="text-gray-600 dark:text-gray-300">Loading...</p>
             </div>
         )
     }
@@ -37,7 +37,7 @@ const StrukturOrganisasiPage = () => {
     }
 
     return (
-        <div className={`bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
+        <div className={`bg-white text-gray-800 dark:text-white dark:bg-gray-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
             <div className="">
                 <span className="font-bold text-4xl">Struktur Organisasi</span>
                 <br />

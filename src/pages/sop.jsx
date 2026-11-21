@@ -25,9 +25,9 @@ const SopPage = () => {
         return (
             <div class="flex items-center min-h-screen justify-center space-x-2 pt-20">
                 <div
-                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-stone-500 border-t-transparent"
+                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-gray-500 border-t-transparent"
                 ></div>
-                <p class="text-stone-600 dark:text-stone-300">Loading...</p>
+                <p class="text-gray-600 dark:text-gray-300">Loading...</p>
             </div>
         )
     }
@@ -37,7 +37,7 @@ const SopPage = () => {
     }
 
     return (
-        <div className={`bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
+        <div className={`bg-white text-gray-800 dark:text-white dark:bg-gray-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
             <div className="">
                 <span className="font-bold text-4xl">SOP</span>
                 <br />
@@ -46,10 +46,10 @@ const SopPage = () => {
                 <span>SOP pelaksanaan praktikum di Lab IPA MTsN 1 Kudus</span>
             </div>
             <div className="flex flex-col gap-10 py-5">
-                <div className="bg-stone-100 dark:bg-stone-700 p-1 rounded-tr-4xl">
-                    <div className="flex flex-col bg-stone-100 dark:bg-stone-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-stone-300 dark:border-stone-500">
+                <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                    <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
                         <div className="flex items-center">
-                            <Astroid size={20} className="text-amber-500" />
+                            <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
                             <span className="text-sm sm:text-xl font-semibold">SOP Penggunaan Laboratorium IPA</span>
                         </div>
                         <iframe
@@ -63,8 +63,8 @@ const SopPage = () => {
                     </div>
                 </div>
 
-                <div className="bg-stone-100 dark:bg-stone-700 p-1 rounded-tr-4xl">
-                    <div className="flex flex-col bg-stone-100 dark:bg-stone-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-stone-300 dark:border-stone-500">
+                <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                    <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
                         <div className="flex items-center">
                             <Astroid size={20} className="text-amber-500" />
                             <span className="text-sm sm:text-xl font-semibold">SOP Pelaksanaan Praktikum/Kegiatan di Laboratorium IPA</span>

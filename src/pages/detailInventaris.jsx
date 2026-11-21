@@ -29,9 +29,9 @@ const DetailInventarisPage = () => {
         return (
             <div class="flex items-center min-h-screen justify-center space-x-2 pt-20">
                 <div
-                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-stone-500 border-t-transparent"
+                    class="h-8 w-8 animate-spin rounded-full border-4 border-solid border-gray-500 border-t-transparent"
                 ></div>
-                <p class="text-stone-600 dark:text-stone-300">Loading...</p>
+                <p class="text-gray-600 dark:text-gray-300">Loading...</p>
             </div>
         )
     }
@@ -41,15 +41,15 @@ const DetailInventarisPage = () => {
     }
 
     return (
-        <div className={`${theme}  bg-white text-stone-800 dark:text-white dark:bg-stone-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
+        <div className={`${theme}  bg-white text-gray-800 dark:text-white dark:bg-gray-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
             <div className="">
                 <span className="font-bold text-4xl">Detail Inventaris</span>
             </div>
             <div className="flex flex-col gap-3">
-                <div className="bg-stone-100 dark:bg-stone-700 p-1 rounded-tr-4xl">
-                    <div className="flex flex-col bg-stone-100 dark:bg-stone-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-stone-300 dark:border-stone-500">
+                <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                    <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
                         <div className="flex justify-between">
-                            <div className={`rounded-xl px-2 text-stone-600 
+                            <div className={`rounded-xl px-2 text-gray-600 
                             ${data[0].kategori === "Fisika"
                                     ? "bg-blue-200"
                                     : data[0].kategori === "Kimia"
@@ -62,7 +62,7 @@ const DetailInventarisPage = () => {
                                 }`}>
                                 {data[0].kategori}
                             </div>
-                            <div className="text-stone-600 dark:text-stone-300">
+                            <div className="text-gray-600 dark:text-gray-300">
                                 Kode: {data[0].kode}
                             </div>
                         </div>
@@ -74,12 +74,12 @@ const DetailInventarisPage = () => {
                                     alt="foto inventaris" />
                             )}
                         </div>
-                        <span className="text-2xl font-semibold border-b-2 border-stone-300">
+                        <span className="text-2xl font-semibold border-b-2 border-gray-300">
                             {data[0].nama}
                         </span>
                         <div className="flex gap-2">
-                            <div className="flex flex-1 p-3 gap-2 flex-col bg-white dark:bg-stone-600 shadow-xl rounded-xs">
-                                <div className="text-stone-500 dark:text-stone-300 text-sm sm:text-lg text-center flex-1">
+                            <div className="flex flex-1 p-3 gap-2 flex-col bg-white dark:bg-gray-600 shadow-xl rounded-xs">
+                                <div className="text-gray-500 dark:text-gray-300 text-sm sm:text-lg text-center flex-1">
                                     Lokasi Penyimpanan
                                 </div>
                                 <div className="flex sm:text-xl font-semibold items-center justify-center flex-1">
@@ -87,8 +87,8 @@ const DetailInventarisPage = () => {
                                     {data[0].lokasi}
                                 </div>
                             </div>
-                            <div className="flex flex-1 p-3 gap-2 flex-col bg-white dark:bg-stone-600 shadow-xl rounded-xs">
-                                <div className="text-stone-500 dark:text-stone-300 text-sm sm:text-lg text-center flex-1">
+                            <div className="flex flex-1 p-3 gap-2 flex-col bg-white dark:bg-gray-600 shadow-xl rounded-xs">
+                                <div className="text-gray-500 dark:text-gray-300 text-sm sm:text-lg text-center flex-1">
                                     Jumlah Inventaris
                                 </div>
                                 <div className="font-semibold sm:text-xl flex-1 text-center">
@@ -96,9 +96,9 @@ const DetailInventarisPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex flex-col bg-white dark:bg-stone-600 shadow-xl rounded-xs p-3 gap-2">
+                        <div className="flex flex-col bg-white dark:bg-gray-600 shadow-xl rounded-xs p-3 gap-2">
                             <div className="flex justify-between">
-                                <div className="text-stone-500 dark:text-stone-300 text-sm sm:text-lg">
+                                <div className="text-gray-500 dark:text-gray-300 text-sm sm:text-lg">
                                     Kondisi
                                 </div>
                                 <div className="bg-green-200 dark:bg-green-400 px-2 rounded-xl text-sm sm:text-lg">
@@ -129,40 +129,40 @@ const DetailInventarisPage = () => {
                 </div>
 
                 {data[0]?.detail && (
-                    <div className="bg-stone-100 dark:bg-stone-700 p-1 rounded-tr-4xl">
-                        <div className="flex flex-col bg-stone-100 ark:bg-stone-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-stone-300 dark:border-stone-500">
+                    <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                        <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
                             <div className="flex items-center gap-1">
-                                <Astroid size={20} className="text-amber-500" />
+                                <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
                                 <span className="text-xl font-semibold">Keterangan</span>
                             </div>
-                            <div className="text-stone-600 dark:text-stone-300">{data[0]?.detail}</div>
+                            <div className="text-gray-600 dark:text-gray-300">{data[0]?.detail}</div>
                         </div>
                     </div>
                 )}
 
                 {data[0]?.fungsi && (
-                    <div className="bg-stone-100 dark:bg-stone-700 p-1 rounded-tr-4xl">
-                        <div className="flex flex-col bg-stone-100 dark:bg-stone-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-stone-300 dark:border-stone-500">
+                    <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                        <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
                             <div className="flex items-center gap-1">
-                                <Astroid size={20} className="text-amber-500" />
+                                <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
                                 <span className="text-xl font-semibold">Fungsi</span>
                             </div>
-                            <div className="text-stone-600 dark:text-stone-300">{data[0]?.fungsi}</div>
+                            <div className="text-gray-600 dark:text-gray-300">{data[0]?.fungsi}</div>
                         </div>
                     </div>
                 )}
 
                 {data[0]?.penggunaan && (
-                    <div className="bg-stone-100 dark:bg-stone-700 p-1 rounded-tr-4xl">
-                        <div className="flex flex-col bg-stone-100 dark:bg-stone-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-stone-300 dark:border-stone-500">
+                    <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                        <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
                             <div className="flex items-center gap-1">
-                                <Astroid size={20} className="text-amber-500" />
+                                <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
                                 <span className="text-xl font-semibold">Penggunaan</span>
                             </div>
                             {data[0].penggunaan.split('\n').map((item, i) => (
                                 <div key={i} className="flex gap-1">
-                                    <div className="text-stone-600 dark:text-stone-300">{i + 1}</div>
-                                    <div className="text-stone-600 dark:text-stone-300">{item}</div>
+                                    <div className="text-gray-600 dark:text-gray-300">{i + 1}</div>
+                                    <div className="text-gray-600 dark:text-gray-300">{item}</div>
                                 </div>
                             ))}
                         </div>
@@ -170,10 +170,10 @@ const DetailInventarisPage = () => {
                 )}
 
                 {data[0].video && (
-                    <div className="bg-stone-100 dark:bg-stone-700 p-1 rounded-tr-4xl">
-                        <div className="flex flex-col bg-stone-100 dark:bg-stone-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-stone-300 dark:border-stone-500">
+                    <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                        <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
                             <div className="flex items-center gap-1">
-                                <Astroid size={20} className="text-amber-500" />
+                                <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
                                 <span className="text-xl font-semibold">Video Penggunaan</span>
                             </div>
                             <iframe
@@ -189,15 +189,15 @@ const DetailInventarisPage = () => {
                 )}
 
                 {data[0].sumber && (
-                    <div className="bg-stone-100 dark:bg-stone-700 p-1 rounded-tr-4xl">
-                        <div className="flex flex-col bg-stone-100 dark:bg-stone-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-stone-300 dark:border-stone-500">
+                    <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                        <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
                             <div className="flex items-center gap-1">
-                                <Astroid size={20} className="text-amber-500" />
+                                <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
                                 <span className="text-xl font-semibold">Referensi</span>
                             </div>
                             {data[0].sumber.split('\n').map((item, i) => (
                                 <div key={i} className="flex gap-1">
-                                    <div className="text-sm text-stone-600 dark:text-stone-300">{item}</div>
+                                    <div className="text-sm text-gray-600 dark:text-gray-300">{item}</div>
                                 </div>
                             ))}
                         </div>
