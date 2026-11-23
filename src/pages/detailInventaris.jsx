@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react"
 import { getSheetData } from "../services/sheetServices"
 import { useParams } from "react-router-dom"
-import { MapPin, Astroid } from "lucide-react"
+import { Astroid } from "lucide-react"
 
 
 const DetailInventarisPage = () => {
     const { kode } = useParams()
-    const [theme, setTheme] = useState("light")
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
@@ -41,9 +40,9 @@ const DetailInventarisPage = () => {
     }
 
     return (
-        <div className={`${theme}  bg-white text-gray-800 dark:text-white dark:bg-gray-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
-            <div className="">
-                <span className="font-bold text-4xl">Detail Inventaris</span>
+        <div className={`bg-white text-gray-800 dark:text-white dark:bg-gray-800 px-5 sm:px-20 flex flex-col gap-4 py-18`}>
+            <div className="font-semibold text-2xl sm:text-4xl">
+                Detail Inventaris
             </div>
             <div className="flex flex-col gap-3">
                 <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
@@ -82,8 +81,7 @@ const DetailInventarisPage = () => {
                                 <div className="text-gray-500 dark:text-gray-300 text-sm sm:text-lg text-center flex-1">
                                     Lokasi Penyimpanan
                                 </div>
-                                <div className="flex sm:text-xl font-semibold items-center justify-center flex-1">
-                                    <MapPin size={15} className="" />
+                                <div className="font-semibold sm:text-xl flex-1 text-center">
                                     {data[0].lokasi}
                                 </div>
                             </div>
@@ -102,7 +100,7 @@ const DetailInventarisPage = () => {
                                     Kondisi
                                 </div>
                                 <div className="bg-green-200 dark:bg-green-400 px-2 rounded-xl text-sm sm:text-lg">
-                                    {data[0].baik / data[0].jumlah * 100}% baik
+                                    {(data[0].baik / data[0].jumlah * 100).toFixed(2)}% baik
                                 </div>
                             </div>
                             <div className="flex w-full">
@@ -197,7 +195,7 @@ const DetailInventarisPage = () => {
                             </div>
                             {data[0].sumber.split('\n').map((item, i) => (
                                 <div key={i} className="flex gap-1">
-                                    <div className="text-sm text-gray-600 dark:text-gray-300">{item}</div>
+                                    <div className="text-sm text-gray-600 dark:text-gray-300 min-w-0 wrap-break-word">{item}</div>
                                 </div>
                             ))}
                         </div>
