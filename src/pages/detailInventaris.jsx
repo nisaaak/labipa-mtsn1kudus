@@ -2,13 +2,32 @@ import { useState, useEffect } from "react"
 import { getSheetData } from "../services/sheetServices"
 import { useParams } from "react-router-dom"
 import { Astroid } from "lucide-react"
-
+import Beracun from '../assets/Beracun.png'
+import Bahayakesehatan from '../assets/Bahayakesehatan.png'
+import Bahayalingkungan from '../assets/Bahayalingkungan.png'
+import Gasterkompresi from '../assets/Gasterkompresi.png'
+import Iritasi from '../assets/Iritasi.png'
+import Korosif from '../assets/Korosif.png'
+import Mudahmeledak from '../assets/Mudahmeledak.png'
+import Mudahterbakar from '../assets/Mudahterbakar.png'
+import Pengoksidasi from '../assets/Pengoksidasi.png'
 
 const DetailInventarisPage = () => {
     const { kode } = useParams()
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
+    const mapImage = {
+        'Bahaya kesehatan': Bahayakesehatan,
+        'Bahaya lingkungan': Bahayalingkungan,
+        'Beracun': Beracun,
+        'Gas terkompresi': Gasterkompresi,
+        'Iritasi': Iritasi,
+        'Korosif': Korosif,
+        'Mudah meledak': Mudahmeledak,
+        'Mudah terbakar': Mudahterbakar,
+        'Pengoksidasi': Pengoksidasi,
+    }
 
     useEffect(() => {
         async function LoadData() {
@@ -100,7 +119,7 @@ const DetailInventarisPage = () => {
                                     Kondisi
                                 </div>
                                 <div className="bg-green-200 dark:bg-green-400 px-2 rounded-xl text-sm sm:text-lg">
-                                    {(data[0].baik / data[0].jumlah * 100).toFixed(2)}% baik
+                                    {Math.round(data[0].baik / data[0].jumlah * 100)}% baik
                                 </div>
                             </div>
                             <div className="flex w-full">
@@ -163,6 +182,83 @@ const DetailInventarisPage = () => {
                                     <div className="text-gray-600 dark:text-gray-300">{item}</div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                )}
+
+                {data[0]?.praktikum && (
+                    <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                        <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
+                            <div className="flex items-center gap-1">
+                                <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
+                                <span className="text-xl font-semibold">Topik Praktikum</span>
+                            </div>
+                            {data[0].praktikum.split('\n').map((item, i) => (
+                                <div key={i} className="flex gap-1">
+                                    <div className="text-gray-600 dark:text-gray-300">{i + 1}</div>
+                                    <div className="text-gray-600 dark:text-gray-300">{item}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {data[0]?.simbol && (
+                    <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                        <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
+                            <div className="flex items-center gap-1">
+                                <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
+                                <span className="text-xl font-semibold">Simbol Bahaya</span>
+                            </div>
+                            <div className="grid grid-cols-3 sm:grid-cols-5">
+                                {data[0].simbol.split('\n').map((item, i) => (
+                                    <div key={i} className="">
+                                        <img src={mapImage[item]} className="w-20 sm:w-35 h-auto flex-1 contrast-80" alt="" />
+                                        <div className="text-xs text-center text-gray-400 dark:text-gray-300">{item}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {data[0].identifikasi && (
+                    <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                        <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
+                            <div className="flex items-center gap-1">
+                                <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
+                                <span className="text-xl font-semibold">Identifikasi Bahaya</span>
+                            </div>
+                            <div className="text-gray-600 dark:text-gray-300">{data[0]?.identifikasi}</div>
+                        </div>
+                    </div>
+                )}
+
+                {data[0]?.pertolongan && (
+                    <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                        <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
+                            <div className="flex items-center gap-1">
+                                <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
+                                <span className="text-xl font-semibold">Tindakan Pertolongan Pertama</span>
+                            </div>
+                            {data[0].pertolongan.split('\n').map((item, i) => (
+                                <div key={i} className="flex gap-1">
+                                    <div className="text-gray-600 dark:text-gray-300">{i + 1}</div>
+                                    <div className="text-gray-600 dark:text-gray-300">{item}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {data[0].tumpahan && (
+                    <div className="bg-gray-100 dark:bg-gray-700 p-1 rounded-tr-4xl">
+                        <div className="flex flex-col bg-gray-100 dark:bg-gray-700 p-4 rounded-tr-4xl gap-3 border-dashed border-2 border-gray-300 dark:border-gray-500">
+                            <div className="flex items-center gap-1">
+                                <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
+                                <span className="text-xl font-semibold">Tindakan Insiden Tumpahan</span>
+                            </div>
+                            <div className="text-gray-600 dark:text-gray-300">{data[0]?.tumpahan}</div>
                         </div>
                     </div>
                 )}

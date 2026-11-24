@@ -5,13 +5,14 @@ import struktur from '../assets/struktur.png'
 import tataTertib from '../assets/tataTertib.png'
 import sop from '../assets/sop.png'
 import picture from '../assets/picture.png'
-import { Astroid, Search, List, LayoutGrid } from "lucide-react"
+import { Astroid, Search, List, LayoutGrid, Pin } from "lucide-react"
 import ImageSlider from "../components/imageSlider"
 import { Link } from "react-router-dom"
 import { useTheme } from "../context/themeContext"
 import FullCalendar from "@fullcalendar/react";
 import themePlugin from "@fullcalendar/react/themes/breezy"; // YOUR THEME
 import dayGridPlugin from "@fullcalendar/react/daygrid";
+import interactionPlugin from "@fullcalendar/react/interaction";
 
 // stylesheets
 import '@fullcalendar/react/skeleton.css'; // ALWAYS NEED SKELETON
@@ -29,7 +30,9 @@ const HomePage = () => {
     const [dataLKPD, setDataLKPD] = useState([])
     const [dataLabV, setDataLabV] = useState([])
     const [dataHome, setDataHome] = useState([])
-    const [dataKalender, setDataKalender] = useState([])
+    const [dataKalenderPC, setDataKalenderPC] = useState([])
+    const [dataKalenderMobile, setDataKalenderMobile] = useState([])
+    const [selectedDate, setSelectedDate] = useState('')
 
     const [filter, setFilter] = useState('');
     const [search, setSearch] = useState("");
@@ -73,7 +76,8 @@ const HomePage = () => {
                 setDataLKPD(dataLKPD);
                 setDataLabV(dataLabV)
                 setDataHome(dataHome)
-                setDataKalender(dataKalender.map(item => ({ title: item.title, date: item.date, extendedProps: { jam: item.jam, kelas: item.kelas, guru: item.guru } })))
+                setDataKalenderPC(dataKalender.map(item => ({ title: item.title, date: item.date, extendedProps: { jam: item.jam, kelas: item.kelas, guru: item.guru } })))
+                setDataKalenderMobile(dataKalender.map(item => ({ title: item.jam, date: item.date, extendedProps: { detail: item.title, kelas: item.kelas, guru: item.guru } })))
 
             } catch (error) {
                 setError(error.message);
@@ -511,7 +515,46 @@ const HomePage = () => {
                         <Astroid size={20} className="dark:text-amber-200 text-amber-500" />
                         <span className="text-xl font-semibold">Jadwal Penggunaan Lab IPA</span>
                     </div>
-                    <div className="max-h-[900px] overflow-auto">
+                    <div className="sm:hidden flex flex-col gap-2">
+                        <FullCalendar
+                            plugins={[dayGridPlugin, themePlugin, interactionPlugin]}
+                            initialView="dayGridMonth"
+                            headerToolbar={{
+                                left: 'prev,next',
+                                center: 'title',
+                            }}
+                            colorScheme={isDark ? 'dark' : 'light'}
+                            events={dataKalenderMobile}
+                            dateClick={(info) => {
+                                const hasEvent = info.view.calendar
+                                    .getEvents()
+                                    .some(
+                                        (event) =>
+                                            event.startStr.slice(0, 10) === info.dateStr
+                                    )
+                                if (!hasEvent) setSelectedDate('')
+                            }}
+                            eventClick={(info) => { setSelectedDate(info.event.startStr) }}
+                        />
+                        {dataKalenderMobile.filter(item => item.date === selectedDate).map((item, i) => (
+                            <div key={i} className="flex bg-white dark:bg-zinc-800 rounded-tr-lg p-1 gap-2">
+                                <Pin size={20} className="dark:text-amber-200 text-amber-500" />
+                                <div className="flex flex-col">
+                                    <div className="font-semibold text-sm">
+                                        {item.extendedProps.detail}
+                                    </div>
+                                    <div className="text-xs text-gray-400 dark:text-gray-300">
+                                        {`Kelas: ${item.extendedProps.kelas}`}
+                                    </div>
+                                    <div className="text-xs text-gray-400 dark:text-gray-300">
+                                        {`Guru: ${item.extendedProps.guru}`}
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                        }
+                    </div>
+                    <div className="hidden sm:flex max-h-[900px] overflow-auto">
                         <div className="w-full min-w-[700px]">
                             <FullCalendar
                                 plugins={[dayGridPlugin, themePlugin]}
@@ -519,19 +562,9 @@ const HomePage = () => {
                                 headerToolbar={{
                                     left: 'prev,next',
                                     center: 'title',
-                                    right: 'dayGridWeek,dayGridDay' // user can switch between the two
                                 }}
                                 colorScheme={isDark ? 'dark' : 'light'}
-                                events={dataKalender}
-                                //     [
-                                //     {
-                                //         title: "Uji asam basa", date: "2026-11-17", extendedProps: {
-                                //             jam: "4-5",
-                                //             kelas: "8F",
-                                //             guru: "SW"
-                                //         }
-                                //     },
-                                // ]
+                                events={dataKalenderPC}
                                 eventContent={(eventInfo) => {
                                     const { kelas, guru, jam } = eventInfo.event.extendedProps;
 
